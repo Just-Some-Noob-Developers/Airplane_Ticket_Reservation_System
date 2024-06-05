@@ -15,9 +15,9 @@ router.get('/flightAvailable',async(request,response)=>{
 
 router.post('/updateflight',async(request,response)=>{
     const{flightNumber, airline, origin, destination, departureTime, arrivalTime, price, totalSeats, seatsAvailable} = request.body;
-    const flight = new flight({flightNumber, airline, origin, destination, departureTime, arrivalTime, price, totalSeats, seatsAvailable:totalSeats}); 
+    const flightt = new flight({flightNumber, airline, origin, destination, departureTime, arrivalTime, price, totalSeats, seatsAvailable:totalSeats}); 
     try{
-        const newFlight = await flight.save();
+        const newFlight = await flightt.save();
         response.status(201).json(newFlight);
     }catch(error){
         response.status(404).json({message:error.message});

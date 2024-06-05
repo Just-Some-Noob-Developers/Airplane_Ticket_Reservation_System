@@ -5,31 +5,18 @@ const ticketSchema = mongoose.Schema({
        type:String,
        required:true,
    },
-    two_way:{
-        type:String,
-        enum:['Yes','No'],
-        required:true,
-    },
-    Number_of_tickets:{
-        type:Number,
-        required:true,
-    },
-    Departure_date:{
-        type:Date,
-        required:true,
-    },
-    totalPrice:{
-        type:Number,
-        required:true,
-    },
-    bookingDate:{
-        type:Date,
-        default:Date.now,
-    },
-    baggage:{
+   name:{
         type:String,
         required:true,
-    }
+   },
+   email:{
+        type:String,
+        required:true,
+   },
+   number_of_tickets:{
+        type:Number,
+        required:true,
+   }
 });
 
 export const ticket = mongoose.model('ticket',ticketSchema);
