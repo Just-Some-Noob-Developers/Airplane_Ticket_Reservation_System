@@ -22,6 +22,22 @@ router.post('/updateflight',async(request,response)=>{
     }catch(error){
         response.status(404).json({message:error.message});
     }
-})
+});
+
+router.delete('/deleteflight/:id',async(request,response)=>{
+    try{
+        const flightid = request.params.id;
+        const plane = await flight.findById(flightid);
+        if(!plane){
+            response.status(404).json({message:"Flight is not available"});
+        }else{
+            await flight.deleteOne({_id:flightid});
+            response.status(200).json({message:"Flight deleted successfully"});
+        }
+    }catch(error){
+        console.log(error.message);
+        response.status(404).json({message:error.message});
+    }
+});
 
 export default router;
