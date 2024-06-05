@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import {port, mongodburl} from "./config.js";
-import route from "./Routes/route.js";
+import router from "./Routes/route.js";
 const app = express();
 
 
@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use('/DeccanFlights',route);
+app.use('/DeccanFlights',router);
 
 app.get('/',(request,response)=>{
     console.log(request);

@@ -24,3 +24,4 @@ router.post('/updateflight',async(request,response)=>{
     }
 })
 
+export default router;
