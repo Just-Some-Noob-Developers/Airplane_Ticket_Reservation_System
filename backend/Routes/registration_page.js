@@ -67,6 +67,22 @@ route.put('/updateTicket/:id',async(request,response)=>{
     }catch(error){
         response.status(400).json({message:error.message});
     }
-})
+});
+
+route.delete('/deleteTicket/:id',async(request,response)=>{
+    try{
+        const userid = request.params.id;
+        const user = await ticket.findById(userid);
+        if(!user){
+            response.status(404).json({message:"Ticket not found"});
+        }else{
+            await ticket.deleteOne({_id:userid});
+            response.status(200).json({message:"Tickets deleted Successfully"});
+        }
+    }catch(error){
+        console.log(error.message);
+        response.status(404).json({message:error.message});
+    }
+});
 
 export default route;
